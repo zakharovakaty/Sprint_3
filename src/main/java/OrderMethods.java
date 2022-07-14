@@ -24,7 +24,7 @@ public class OrderMethods {
 
     @Step("Cancel created order")
     public Response cancelOrder(int track) {
-        return RestAssuredClient.put(ENDPOINT + "/cancel");
+        return RestAssuredClient.put(ENDPOINT + "/cancel?track=" + track);
     }
 
     public Response getOrder(int track){ return RestAssuredClient.get(ENDPOINT + "/track?t=" + track); }

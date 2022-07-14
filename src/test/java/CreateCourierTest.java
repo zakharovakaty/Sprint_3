@@ -1,23 +1,24 @@
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.junit.After;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.equalTo;
 
 public class CreateCourierTest {
 
-    private CourierMethods courierMethods;
+    private static CourierMethods courierMethods;
     private int courierId;
 
-    @Before
-    public void setUp() {
+    @BeforeClass
+    public static void setUp() {
         courierMethods = new CourierMethods(new RestAssuredClient());
     }
 
     @After
     public void tearDown() {
+        if (courierId != 0)
         courierMethods.deleteCourier(courierId);
     }
 
